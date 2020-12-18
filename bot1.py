@@ -20,7 +20,7 @@ def start(message):
         bot.send_message(message.from_user.id, "Please, choose language./Пожалуйста, выберите язык.", reply_markup = keyboard1);
         bot.register_next_step_handler(message, choose_lang); #следующий шаг – функция get_content
     else:
-        bot.send_message(message.from_user.id, 'Welcome! If you have any questions or want learn more about us pls read documentation https://www.dropbox.com/s/gkzw74s9d5e7px9/documentation_eng.html?dl=0 /Добро пожаловать, если у вас есть вопросы или вы хотите узнать больше о нас, вам сюда: https://www.dropbox.com/s/defltjfxc6o32sf/documentation_rus.html?dl=0');
+        bot.send_message(message.from_user.id, 'Welcome! If you have any questions or want learn more about us pls read documentation http://imagetransferbot.droppages.com/ /Добро пожаловать, если у вас есть вопросы или вы хотите узнать больше о нас, вам сюда: http://imagetransferbotdocumentation.droppages.com/');
         bot.send_message(message.from_user.id, 'Write/Напишите   /start');
         bot.register_next_step_handler(message, start);
 
@@ -32,7 +32,7 @@ def choose_lang(message):
         bot.send_message(message.from_user.id, "You have chosen English! Please send a photo that you would like to style!:)");
         bot.register_next_step_handler(message, get_content_english);
     if message.text != 'russian' and message.text != 'english':
-        bot.send_message(message.from_user.id, "You sent me something wrong ... Please, choose language. If you have any questions pls read documentation https://www.dropbox.com/s/gkzw74s9d5e7px9/documentation_eng.html?dl=0 /Пожалуйста, выберите язык. Если у вас есть вопросы, прочтите документацию: https://www.dropbox.com/s/defltjfxc6o32sf/documentation_rus.html?dl=0 ", reply_markup = keyboard1);
+        bot.send_message(message.from_user.id, "You sent me something wrong ... Please, choose language. If you have any questions pls read documentation http://imagetransferbot.droppages.com/ /Пожалуйста, выберите язык. Если у вас есть вопросы, прочтите документацию: http://imagetransferbotdocumentation.droppages.com/ ", reply_markup = keyboard1);
         bot.register_next_step_handler(message, choose_lang);
 
 
@@ -40,7 +40,7 @@ def choose_lang(message):
 
 def get_content_russian(message): #получаем контент
     if message.photo == None:
-        bot.send_message(message.from_user.id, "Вы прислали мне что-то не то... Пожалуйста, пришлите фотографию, которой вы бы хотели придать стиля!:)  Если у вас есть вопросы, прочтите документацию: https://www.dropbox.com/s/defltjfxc6o32sf/documentation_rus.html?dl=0");
+        bot.send_message(message.from_user.id, "Вы прислали мне что-то не то... Пожалуйста, пришлите фотографию, которой вы бы хотели придать стиля!:)  Если у вас есть вопросы, прочтите документацию: http://imagetransferbotdocumentation.droppages.com/");
         bot.register_next_step_handler(message, get_content_russian);
     else:
         file_info = bot.get_file(message.photo[0].file_id)
@@ -57,7 +57,7 @@ def get_content_russian(message): #получаем контент
 def get_content_english(message): #получаем контент
 
     if message.photo == None:
-        bot.send_message(message.from_user.id, "You sent me something wrong ... Please send me a photo you would like to style! :) If you have any questions pls read documentation https://www.dropbox.com/s/gkzw74s9d5e7px9/documentation_eng.html?dl=0");
+        bot.send_message(message.from_user.id, "You sent me something wrong ... Please send me a photo you would like to style! :) If you have any questions pls read documentation http://imagetransferbot.droppages.com/");
         bot.register_next_step_handler(message, get_content_english);
     else:
         file_info = bot.get_file(message.photo[0].file_id)
@@ -74,7 +74,7 @@ def get_content_english(message): #получаем контент
 def get_style_russian(message): #получаем стиль
     global scr1, scr2
     if message.photo == None:
-        bot.send_message(message.from_user.id, "Вы прислали мне что-то не то... Пожалуйста, пришлите фотографию стиля!  Если у вас есть вопросы, прочтите документацию: https://www.dropbox.com/s/defltjfxc6o32sf/documentation_rus.html?dl=0");
+        bot.send_message(message.from_user.id, "Вы прислали мне что-то не то... Пожалуйста, пришлите фотографию стиля!  Если у вас есть вопросы, прочтите документацию: http://imagetransferbotdocumentation.droppages.com/");
         bot.register_next_step_handler(message, get_style_russian);
 
     else:
@@ -96,7 +96,7 @@ def get_style_russian(message): #получаем стиль
 def get_style_english(message): #получаем стиль
     global scr1, scr2
     if message.photo == None:
-        bot.send_message(message.from_user.id, "You sent me something wrong ... Please send a photo of the style! If you have any questions pls read documentation https://www.dropbox.com/s/gkzw74s9d5e7px9/documentation_eng.html?dl=0");
+        bot.send_message(message.from_user.id, "You sent me something wrong ... Please send a photo of the style! If you have any questions pls read documentation http://imagetransferbot.droppages.com/");
         bot.register_next_step_handler(message, get_style_english);
 
     else:
